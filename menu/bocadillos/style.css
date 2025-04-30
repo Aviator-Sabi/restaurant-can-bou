@@ -64,6 +64,7 @@ ul {
     margin: 15px 0;
 }
 
+
 /* Header Styles */
 header {
     display: flex;
@@ -81,16 +82,24 @@ header {
 
 nav ul {
     display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
+    position: relative;
     margin: 0 15px;
 }
 
 nav ul li a {
     position: relative;
+    text-decoration: none;
+    color: #1a1a1a; 
+    padding: 10px 5px;
 }
 
+/* Línea debajo del enlace al hacer hover */
 nav ul li a:after {
     content: '';
     position: absolute;
@@ -106,6 +115,41 @@ nav ul li a:hover:after {
     width: 100%;
 }
 
+/* Estilos para el submenú */
+nav ul li ul.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #faf9f4;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: 1000; 
+}
+
+nav ul li ul.dropdown li {
+    display: block;
+    margin: 0;
+}
+
+nav ul li ul.dropdown li a {
+    padding: 10px 15px;
+    color: #1a1a1a;
+    display: block;
+}
+
+/* Mostrar el submenú al hacer hover */
+nav ul li:hover ul.dropdown {
+    display: block;
+}
+
+/* Opcional: efecto hover en submenú */
+nav ul li ul.dropdown li a:hover {
+    background-color: #faf9f4;
+}
+
+/* Carrito (cart) */
 .cart svg {
     vertical-align: middle;
 }
@@ -179,15 +223,4 @@ nav ul li a:hover:after {
     height: 1px;
     background-color: #e0e0e0;
     margin: 15px 0;
-}
-
-/* Responsiveness: Stacking the items vertically when screen is narrow */
-@media (max-width: 768px) {
-    .menu-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* More flexible on smaller screens */
-    }
-
-    .menu-item {
-        flex: 1 1 100%; /* Each item takes full width on smaller screens */
-    }
 }
